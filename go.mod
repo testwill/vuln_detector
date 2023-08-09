@@ -2,7 +2,10 @@ module vuln_detector
 
 go 1.19
 
-require github.com/aquasecurity/trivy v0.38.3
+require (
+	github.com/aquasecurity/trivy v0.38.3
+	github.com/aquasecurity/trivy-db v0.0.0-20230116084806-4bcdf1c414d0
+)
 
 require (
 	github.com/aquasecurity/go-dep-parser v0.0.0-20230309121549-fcc0deb06781 // indirect
@@ -10,7 +13,6 @@ require (
 	github.com/aquasecurity/go-npm-version v0.0.0-20201110091526-0b796d180798 // indirect
 	github.com/aquasecurity/go-pep440-version v0.0.0-20210121094942-22b2f8951d46 // indirect
 	github.com/aquasecurity/go-version v0.0.0-20210121072130-637058cfe492 // indirect
-	github.com/aquasecurity/trivy-db v0.0.0-20230116084806-4bcdf1c414d0 // indirect
 	github.com/aws/aws-sdk-go v1.44.212 // indirect
 	github.com/briandowns/spinner v1.12.0 // indirect
 	github.com/caarlos0/env/v6 v6.10.1 // indirect

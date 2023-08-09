@@ -33,9 +33,7 @@ var (
 func main() {
 	var (
 		imgName string
-		options types.ScanOptions
 	)
-	options.ListAllPackages = true
 	flag.StringVar(&imgName, "image", "", "镜像名")
 	flag.Parse()
 	var blobList []ftypes.BlobInfo
@@ -79,10 +77,10 @@ func main() {
 			}
 
 			log.Logger.Infof("Detecting library vulnerabilities, type: %s, path: %s", app.Type, app.FilePath)
-			vulns, err := library.Detect(app.Type, app.Libraries)
+			vulnsLib, err := library.Detect(app.Type, app.Libraries)
 			if err != nil {
 				log.Logger.Fatal("failed vulnerability detection of libraries: %w", err)
-			} else if len(vulns) == 0 {
+			} else if len(vulnsLib) == 0 {
 				continue
 			}
 
@@ -94,7 +92,7 @@ func main() {
 
 			results = append(results, types.Result{
 				Target:          target,
-				Vulnerabilities: vulns,
+				Vulnerabilities: vulnsLib,
 				Class:           types.ClassLangPkg,
 				Type:            app.Type,
 			})
@@ -110,4 +108,5 @@ func main() {
 	log.Logger.Info("os and libraries vulnerability :")
 	data, _ = json.Marshal(results)
 	log.Logger.Info(string(data))
+	db.Close()
 }
