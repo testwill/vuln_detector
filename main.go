@@ -34,7 +34,7 @@ func main() {
 	var (
 		imgName string
 	)
-	flag.StringVar(&imgName, "image", "", "镜像名")
+	flag.StringVar(&imgName, "image", "", "image name")
 	flag.Parse()
 	var blobList []ftypes.BlobInfo
 	file, _ := os.ReadFile("test.json")
